@@ -1,0 +1,6 @@
+TO DO:
+Create stats object
+	Get list of valid stats from playerJSON
+	Use valid stats to build directory for stat-storing array (Name of stat -> Index of stat in array)
+	
+	 
