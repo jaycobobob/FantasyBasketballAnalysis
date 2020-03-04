@@ -66,17 +66,14 @@ public class urlProcessor {
 	 * player page. The resulting player page contains a players stats by year in a
 	 * JSON file, that can be parsed by {@link urlProcessor.getJSONFromURL}.
 	 * 
-	 * @author           Jacob Edwards
-	 * @version          %I%, %G%
-	 * @param   personId the string representation of the desired player's personId.
-	 *                   A personId is a numerical identifier unique to each NBA
-	 *                   player and can be found on the main NBA player data page.
-	 * @return           returns a properly formatted link to a specific NBA
-	 *                   player's stat page.
-	 * @see              <a href=
-	 *                   "http://data.nba.net/10s/prod/v1/2019/players.json">List of
-	 *                   player personIds</a>
-	 * @since            1.0
+	 * @param  personId the string representation of the desired player's personId.
+	 *                  A personId is a numerical identifier unique to each NBA
+	 *                  player and can be found on the main NBA player data page.
+	 * @return          returns a properly formatted link to a specific NBA player's
+	 *                  stat page.
+	 * @see             <a href=
+	 *                  "http://data.nba.net/10s/prod/v1/2019/players.json">List of
+	 *                  player personIds</a>
 	 */
 	public static String getPlayerPage(String personId) {
 		return "http://data.nba.net/prod/v1/2019/players/" + personId + "_profile.json";
