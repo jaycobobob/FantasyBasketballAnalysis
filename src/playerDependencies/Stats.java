@@ -1,7 +1,9 @@
 package playerDependencies;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.json.simple.JSONArray;
@@ -135,4 +137,50 @@ public class Stats {
 		}
 		return 0.0f;
 	}
+
+	public int size() {
+		return statArray.length;
+	}
+
+	public StatsIterator getIterator() {
+		return new StatsIterator(this);
+	}
+
+	public String toString() {
+		String out = "";
+		StatsIterator iter = this.getIterator();
+		while (iter.hasNext()) {
+			out += iter.next() + ", ";
+		}
+		out = out.substring(0, out.length() - 2);
+		return out;
+	}
+
+	public class StatsIterator {
+		private int cursor;
+		private Stats statsObj;
+		private List<String> keys;
+
+		protected StatsIterator(Stats statsObj) {
+			cursor = 0;
+			this.statsObj = statsObj;
+			try {
+				keys = new ArrayList<String>(Stats.getStatMapInstance().keySet());
+			} catch (IOException | InvalidContentsException e) {
+				keys = new ArrayList<String>();
+			}
+		}
+
+		public boolean hasNext() {
+			return cursor < statsObj.size() && statsObj.size() != 0;
+		}
+
+		public IndividualStat next() {
+			String stat = keys.get(cursor);
+			IndividualStat out = new IndividualStat(stat, statsObj.getStat(stat));
+			cursor++;
+			return out;
+		}
+	}
+
 }
